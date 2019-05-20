@@ -1,23 +1,27 @@
 <?php
 require_once('..\cabecalho.php');
+
+$sql  = "SELECT * FROM chamados;";
+      $query = $con->query($sql);
+      $lista = $query->fetchAll();
+
  ?>
 
-
-
 <div class="container">
-  <a class="btn btn-secondary" href="#">
-      <span data-feather="plus-square"></span>Novo
-  </a>
+
   <div class="list-group">
+    <?php foreach($lista as $item):$id = $item['id'];?>
+
     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">Cabeçalho do item</h5>
-        <small>3 dias atrás</small>
+        <h5 class="mb-1"><?= $item['titulo'] ?></h5>
+        <small><!--> Status <--></small>
       </div>
-      <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-      <small>Donec id elit non mi porta.</small>
+      <p class="mb-1"><?= $item['descricao']?></p>
+      <small><!--> Requerente <--></small></small>
     </a>
-    
+    <?php endforeach ?>
+
   </div>
 
 </div>

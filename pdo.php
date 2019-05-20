@@ -1,6 +1,6 @@
 <?php
 
-    $str = "mysql:host=localhost;dbname=trabalho";
+    $str = "mysql:host=localhost;dbname=trab_ads_132";
     $userdb = "root";
     $senhadb= "";
 

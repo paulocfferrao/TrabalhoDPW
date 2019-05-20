@@ -4,6 +4,7 @@ session_start();
 if (!isset($_SESSION['user'])){
   header('Location:..\index.php');
 }
+require_once('pdo.php');
  ?>
 <!DOCTYPE html>
 <html>
@@ -39,16 +40,16 @@ body{
         <div class="collapse navbar-collapse" id="corNavbar01">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Novo <span class="sr-only">(Página atual)</span></a>
+              <a class="nav-link" href="#">Novo <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Destaques</a>
+              <a class="nav-link" href="#">Usuários</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Preços</a>
+              <a class="nav-link" href="#">Computadores</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Sobre</a>
+              <a class="nav-link" href="#">Categorias</a>
             </li>
           </ul>
           <form class="form-inline">
