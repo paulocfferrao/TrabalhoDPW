@@ -1,10 +1,28 @@
 <?php
 session_start();
 
+require_once('pdo.php');
+
+
 if (!isset($_SESSION['user'])){
   header('Location:..\index.php');
+}else{
+  $user = $_SESSION['user'];
+  $senha = $_SESSION['senha'];
+  $sql  = "SELECT count(*) as qtd FROM usuarios WHERE user=:user AND senha=:senha";
+  $query = $con->prepare($sql);
+  $params = array('user'=>$user,'senha'=>$senha);
+  $r = $query->execute($params);
+  $result = $query->fetch();
+  if($result['qtd']!=1){
+    header('Location:..\index.php');
+
+  }
+
 }
-require_once('pdo.php');
+
+
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +38,7 @@ require_once('pdo.php');
 </head>
 <style>
 body{
- background-image: url('../img/fundo.jpg');
+ background-image: url('../img/fundo2.png');
  background-size: cover;
  background-repeat: no-repeat;
  height: 100%;
@@ -40,7 +58,7 @@ body{
         <div class="collapse navbar-collapse" id="corNavbar01">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Novo <span class="sr-only"></span></a>
+              <a class="nav-link" href=".\formChamado.php">Novo chamado<span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Usuários</a>
