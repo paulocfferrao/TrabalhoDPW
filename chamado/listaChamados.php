@@ -1,10 +1,7 @@
 <?php
 require_once('..\cabecalho.php');
-
-$sql  = "SELECT * FROM chamados;";
-      $query = $con->query($sql);
-      $lista = $query->fetchAll();
-
+$tabela = "chamados";
+require('..\sqlLista.php');
  ?>
 
 <div class="container">
