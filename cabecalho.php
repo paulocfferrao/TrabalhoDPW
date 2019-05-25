@@ -71,9 +71,10 @@ body{
             </li>
           </ul>
           <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+            <input class="form-control mr-sm-2" name="pesquisar" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
             <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Pesquisar</button>
           </form>
+          <a href="..\sair.php"><input type="submit" class="btn btn-outline-info" value="Sair">  </a>
         </div>
       </nav>
   </header>
