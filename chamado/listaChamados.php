@@ -2,21 +2,37 @@
 require_once('..\cabecalho.php');
 $tabela = "chamados";
 require('..\sqlLista.php');
+require_once('..\getIdUser.php');
  ?>
 
 <div class="chamados">
-  <?php if (isset($_GET['msg'])) {
-    if ($_GET['msg']=='200') {    ?>
-      <div class="alert alert-success" role="alert">
-        Chamado enviado com sucesso!
-      </div>
+  <?php
+    if (isset($_GET['msg'])) {
+      if ($_GET['msg']=='200') {
+  ?>
+        <div class="alert alert-success" role="alert">
+          Chamado enviado com sucesso!
+        </div>
 
-    <?php
+  <?php
+      }elseif ($_GET['msg']=='201') {
+  ?>
+        <div class="alert alert-success" role="alert">
+          Chamado alterado com sucesso!
+        </div>
+  <?php
+      }
     }
-  }  ?>
+  ?>
 
   <div class="list-group">
-    <?php foreach($lista as $item):$id = $item['id'];?>
+    <?php foreach($lista as $item):
+            $id = $item['id'];
+            //var_dump($item);
+            if ($item['idrequerente']==$idUser['id'] OR $item['idtecnico']==$idUser['id']) {
+
+
+    ?>
 
     <a href="formChamado.php?id=<?= $item['id']?>" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
@@ -28,7 +44,7 @@ require('..\sqlLista.php');
       <?php $requerente = buscaValor($item['idrequerente'],"usuarios","user",$con); ?>
       <small>Requerente: <?= $requerente;?></small></small>
     </a>
-    <?php endforeach ?>
+    <?php } endforeach ?>
 
   </div>
 

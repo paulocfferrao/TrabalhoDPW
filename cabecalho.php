@@ -50,7 +50,7 @@ body{
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><?= $_SESSION['user']?></a>
+        <a class="navbar-brand" href="#">Bem vindo <?= $_SESSION['user']?>!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#corNavbar01" aria-controls="corNavbar01" aria-expanded="false" aria-label="Alterna navegação">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -58,7 +58,10 @@ body{
         <div class="collapse navbar-collapse" id="corNavbar01">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href=".\formChamado.php">Novo chamado<span class="sr-only"></span></a>
+              <a class="nav-link" href="..\chamado\formChamado.php">Novo chamado<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="..\chamado\listaChamados.php">Chamados</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Usuários</a>
@@ -71,8 +74,7 @@ body{
             </li>
           </ul>
           <form class="form-inline">
-            <input class="form-control mr-sm-2" name="pesquisar" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Pesquisar</button>
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Relátórios</button>
           </form>
           <a href="..\sair.php"><input type="submit" class="btn btn-outline-info" value="Sair">  </a>
         </div>

@@ -1,13 +1,14 @@
   <?php
   session_start();
   require_once('..\pdo.php');
-  $user = $_SESSION['user'];
-  $acao = $_GET['acao'];
-  $sql = "SELECT id FROM usuarios WHERE user=:user;";
-  $query = $con->prepare($sql);
-  $params = array('user'=>$user);
-  $r = $query->execute($params);
-  $result = $query->fetch();
+  require_once('..\getIdUser.php');
+  // $user = $_SESSION['user'];
+  // $acao = $_GET['acao'];
+  // $sql = "SELECT id FROM usuarios WHERE user=:user;";
+  // $query = $con->prepare($sql);
+  // $params = array('user'=>$user);
+  // $r = $query->execute($params);
+  // $idUser = $query->fetch();
   $registro['titulo'] = $_POST['titulo'];
   $registro['descricao'] = $_POST['descricao'];
   $registro['id_categoria'] = $_POST['id_categoria'];
@@ -18,7 +19,7 @@
      // var_dump($_POST);
 
      $registro['status'] = "Novo";
-     $registro['id_requerente'] = $result['id'];
+     $registro['id_requerente'] = $idUser['id'];
 //    var_dump($registro);
 
     $sql = "INSERT INTO chamados(titulo, descricao,idrequerente, idcategoria, idcomputador,status)
@@ -39,8 +40,15 @@
     idcomputador=:id_computador,STATUS=:STATUS,solucao=:solucao WHERE id=:id";
     $query = $con->prepare($sql);
     $registro = $_POST;
-    $registro['STATUS'] = "Fechado";
-    $registro['id_requerente'] = $result['id'];
+    if ($registro['solucao']!= "") {
+      $registro['STATUS'] = "Fechado";
+
+    }else {
+      $registro['STATUS'] = "Novo";
+
+    }
+//    $registro['STATUS'] = "Fechado";
+    $registro['id_requerente'] = $idUser['id'];
     $registro['id'] = $_GET['id'];
     var_dump($registro);
     $r   = $query->execute($registro);
