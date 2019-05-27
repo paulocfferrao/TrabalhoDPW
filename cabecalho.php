@@ -20,6 +20,14 @@ if (!isset($_SESSION['user'])){
   }
 
 }
+function buscaValor($id,$tabelaBusca,$colunaBusca,$con){
+  $sql  = "SELECT * FROM $tabelaBusca WHERE id=:id;";
+  $query = $con->prepare($sql);
+  $params = array('id'=>$id);
+  $r = $query->execute($params);
+  $registro = $query->fetch();
+  return $registro[$colunaBusca];
+}
 
 
 
@@ -64,17 +72,17 @@ body{
               <a class="nav-link" href="..\chamado\listaChamados.php">Chamados</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Usuários</a>
+              <a class="nav-link" href="">Usuários</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Computadores</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Categorias</a>
+              <a class="nav-link" href="..\categoria\listaCategoria.php">Categorias</a>
             </li>
           </ul>
           <form class="form-inline">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Relátórios</button>
+            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Relatórios</button>
           </form>
           <a href="..\sair.php"><input type="submit" class="btn btn-outline-info" value="Sair">  </a>
         </div>
