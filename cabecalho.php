@@ -75,7 +75,7 @@ body{
               <a class="nav-link" href="">Usuários</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Computadores</a>
+              <a class="nav-link" href="..\computador\listaComputador.php">Computadores</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="..\categoria\listaCategoria.php">Categorias</a>
