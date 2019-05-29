@@ -72,7 +72,7 @@ body{
               <a class="nav-link" href="..\chamado\listaChamados.php">Chamados</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">Usuários</a>
+              <a class="nav-link" href="..\usuario\listaUsuario.php">Usuários</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="..\computador\listaComputador.php">Computadores</a>

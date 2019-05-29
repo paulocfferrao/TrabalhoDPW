@@ -13,7 +13,7 @@
   $registro['descricao'] = $_POST['descricao'];
   $registro['id_categoria'] = $_POST['id_categoria'];
   $registro['id_computador'] = $_POST['id_computador'];
-
+  $acao=$_GET['acao'];
 
    if ($acao=="novo") {
      // var_dump($_POST);
