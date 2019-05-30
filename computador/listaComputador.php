@@ -2,40 +2,12 @@
 require_once('..\cabecalho.php');
 $tabela="computador";
 require('..\sqlListaComputador.php');
+if (!testaAdmin($_SESSION['user'],$con)){
+    header('Location:..\chamado\listaChamados.php?msg=401');
+}
  ?>
 
 <div class="chamados">
-  <?php
-    if (isset($_GET['msg'])) {
-      if ($_GET['msg']=='200') {
-  ?>
-        <div class="alert alert-success" role="alert">
-          Computador enviada com sucesso!
-        </div>
-
-  <?php
-      }elseif ($_GET['msg']=='201') {
-  ?>
-        <div class="alert alert-success" role="alert">
-          Computador alterada com sucesso!
-        </div>
-  <?php
-      }elseif ($_GET['msg']=='400') {
-  ?>
-        <div class="alert alert-danger" role="alert">
-          Não é possível excuir computador já utilizado!
-        </div>
-
-  <?php
-}elseif ($_GET['msg']=='202') {
-  ?>
-        <div class="alert alert-success" role="alert">
-          Computador excluida com sucesso!
-        </div>
-  <?php
-      }
-    }
-  ?>
 
   <div class="list-group">
     <a href="formComputador.php">

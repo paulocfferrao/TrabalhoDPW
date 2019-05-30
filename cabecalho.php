@@ -29,6 +29,13 @@ function buscaValor($id,$tabelaBusca,$colunaBusca,$con){
   return $registro[$colunaBusca];
 }
 
+function testaAdmin($user,$con){
+  if ($user=="admin") {
+    return true;
+  }else {
+    return false;
+  }
+}
 
 
  ?>
@@ -44,6 +51,12 @@ function buscaValor($id,$tabelaBusca,$colunaBusca,$con){
 
 	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
+<script type="text/javascript">
+function printpage()
+  {
+  window.print()
+  }
+</script>
 <style>
 body{
  background-image: url('../img/fundo2.png');
@@ -82,9 +95,11 @@ body{
             </li>
           </ul>
           <form class="form-inline">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Relatórios</button>
+            <input type="button" class="btn btn-outline-info my-2 my-sm-0" value="Relatório" onclick="printpage()" />
+            
           </form>
           <a href="..\sair.php"><input type="submit" class="btn btn-outline-info" value="Sair">  </a>
         </div>
       </nav>
   </header>
+<?php include_once('../exibeMsg.php'); ?>
